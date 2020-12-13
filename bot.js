@@ -39,6 +39,10 @@ client.on('message',msg => {
         msg.react("🍴")
     }
 
+    if (msg.content === "Teter"){
+        msg.channel.send("C'est le plus beau")        
+    }
+
     if (msg.content === "Donne moi un A"){
         msg.channel.send('Je suis un meilleur bot')
         msg.react("🅰️")
