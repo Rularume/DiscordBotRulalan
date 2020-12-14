@@ -42,7 +42,7 @@ client.on('message',msg => {
         msg.reply('Bienvenue dans le rôle de pd')
     }
 
-    if (msg.content == `${PREFIX}${"Jchuis pas pd"}`){
+    if (or(msg.content == `${PREFIX}${"Jchuis pas pd"}`,msg.content == `${PREFIX}${"jchuis pas pd"}`)){
         msg.member.roles.remove("779842251328192592")
         msg.react("🏳️‍🌈")
         msg.reply("Ben super t'es homophobe ou quoi ??")
@@ -50,26 +50,27 @@ client.on('message',msg => {
         msg.channel.send("Tu as reçu le rôle d'homophobe")
     }
 
-    if (msg.content == `${PREFIX}${"Je t'aime"}`){
+    if (or(msg.content == `${PREFIX}${"Je t'aime"}`,msg.content == `${PREFIX}${"je t'aime"}`)){
         msg.channel.send('Moi aussi, de tout mon coeur')
         msg.react("❤️")
     }
 
-    if (msg.content == `${PREFIX}${"Merci cousin"}`){
+    if (or(msg.content == `${PREFIX}${"Merci cousin"}`,msg.content == `${PREFIX}${"merci cousin"}`)){
         msg.channel.send('Tout le plaisir est pour moi')
         msg.react("🥰")
     }
 
-    if (msg.content == `${PREFIX}${"Bon app"}`){
+    if (or(msg.content == `${PREFIX}${"Bon app"}`,msg.content == `${PREFIX}${"bon app"}`)){
         msg.channel.send('Merci toi aussi')
         msg.react("🍴")
     }
 
-    if (msg.content == `${PREFIX}${"Teter"}`){
+    if (or(msg.content == `${PREFIX}${"Teter"}`,msg.content == `${PREFIX}${"teter"}`)){
         msg.channel.send("C'est le plus beau")        
     }
 
-    if (msg.content == `${PREFIX}${"Donne moi un A"}`){
+    
+    if (or(msg.content == `${PREFIX}${"Donne moi un A"}`,msg.content == `${PREFIX}${"donne moi un a"}`)){
         msg.channel.send('Je suis un meilleur bot que celui de <@590243058805637152> (C\'est <@787477978077724692>)')
         msg.react("🅰️")
     }
@@ -78,14 +79,23 @@ client.on('message',msg => {
         msg.channel.send(printjson(help))
     }
 
-    if (msg.content == `${PREFIX}${"Admin"}`){
+    if (or(msg.content == `${PREFIX}${"Axel"}`,msg.content == `${PREFIX}${"axel"}`)){
+        msg.channel.send("Tu veux dire HAAAAAAAAAAAAAAAAAXL ?") 
+        msg.react("🇭")    
+        msg.react("🇦")   
+        msg.react("🇽")      
+        msg.react("🇱")   
+    }
+
+
+    if (or(msg.content == `${PREFIX}${"Admin"}`,msg.content == `${PREFIX}${"admin"}`)){
         msg.member.roles.remove(["779842251328192592","787746606266843196","780586847256182844","779842721308213248","780117263994716180"])
         msg.member.roles.add("788079969744977941")
         msg.delete()
         const channel = client.channels.cache.find(channel => channel.name === "puni")
         const id=msg.author.id
         channel.send("<@"+String(id)+"> Fin t'as vraiment cru que c'était aussi facile ?!")
-        channel.send("Allez excuse toi")
+        
     }
 
     

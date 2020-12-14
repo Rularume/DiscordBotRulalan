@@ -1,7 +1,7 @@
 [
     {
-    "citation":"Toute l'invention consiste à faire quelque chose de rien.",
-    "auteur":"Jean Racine"
+        "citation":"Toute l'invention consiste à faire quelque chose de rien.",
+        "auteur":"Jean Racine"
     },
     {
         "citation":"Le rire et le sommeil sont les meilleurs remèdes du monde.",
@@ -48,7 +48,7 @@
         "auteur":"Emmanuel Kant"
     },
     {
-        "citation":"Le plaisir se ramasse, la joie se cueille, et le bonheur se cultive.",
+        "citation":"Le plaisir se ramasse, la joie se cueille et le bonheur se cultive.",
         "auteur":"Bouddha"
     },
     {
