@@ -21,7 +21,7 @@ client.on('ready', () => {
 
 client.on('message',msg => {
     
-    if (msg.content == `${PREFIX}${"Citation"}`){
+    if (or(msg.content == `${PREFIX}${"Citation"}`,msg.content == `${PREFIX}${"citation"}`)){
         //msg.channel.send("test sucessfull")
         n=Math.floor(Math.random() * citation.length)
         msg.channel.send("```"+citation[n].citation+'\n\n'+citation[n].auteur+"```")
@@ -74,7 +74,7 @@ client.on('message',msg => {
         msg.react("🅰️")
     }
 
-    if (msg.content == `${PREFIX}${"help"}`){
+    if (or(msg.content == `${PREFIX}${"help"}`,msg.content == `${PREFIX}${"Help"}`)){
         msg.channel.send(printjson(help))
     }
 
