@@ -20,6 +20,10 @@
         "auteur":"Brillat-Savarin"
     },
     {
+        "citation":"Le bonheur ne vient pas à ceux qui l'attendent assis.",
+        "auteur":"Baden-Powell"
+    },
+    {
         "citation":"Les rêves d'un chat sont peuplés de souris.",
         "auteur":"Proverbe libanais"
     },
@@ -30,6 +34,14 @@
     {
         "citation":"Je ne cherche pas à connaître les réponses, je cherche à comprendre les questions.",
         "auteur":"Confucius"
+    },
+    {
+        "citation":"Notre plus grande gloire n'est pas de ne jamais tomber, mais de nous relever chaque fois.",
+        "auteur":"Confucius"
+    },
+    {
+        "citation":"La diplomatie, c'est faire et dire les plus vilaines choses de la manière la plus élégante",
+        "auteur":"Isaac Goldberg"
     },
     {
         "citation":"Rien ne peut résister à l'assaut du rire.",
@@ -62,6 +74,14 @@
     {
         "citation":"Là où l'on s'aime il ne fait jamais nuit.",
         "auteur":"Proverbe africain"
+    },
+    {
+        "citation":"Le seul homme à ne jamais faire d'erreur est celui qui ne fait rien.",
+        "auteur":"Théodore Roosevelt"
+    },
+    {
+        "citation":"",
+        "auteur":"Théodore Roosevelt"
     },
     {
         "citation":"Nous portons en nous des merveilles que nous cherchons en dehors de nous.",

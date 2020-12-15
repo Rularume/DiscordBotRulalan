@@ -23,7 +23,7 @@ client.on('message',msg => {
     
     if (or(msg.content == `${PREFIX}${"Citation"}`,msg.content == `${PREFIX}${"citation"}`)){
         //msg.channel.send("test sucessfull")
-        n=Math.floor(Math.random() * citation.length)
+        n=Math.floor(Math.random() * (citation.length))-1
         msg.channel.send("```"+citation[n].citation+'\n\n'+citation[n].auteur+"```")
     } 
     
@@ -69,6 +69,9 @@ client.on('message',msg => {
         msg.channel.send("C'est le plus beau")        
     }
 
+    if (or(msg.content == `${PREFIX}${"Sacoche"}`,msg.content == `${PREFIX}${"sacoche"}`)){
+        msg.channel.send("Le dernier des dinosaures")        
+    }
     
     if (or(msg.content == `${PREFIX}${"Donne moi un A"}`,msg.content == `${PREFIX}${"donne moi un a"}`)){
         msg.channel.send('Je suis un meilleur bot que celui de <@590243058805637152> (C\'est <@787477978077724692>)')
@@ -87,7 +90,6 @@ client.on('message',msg => {
         msg.react("🇱")   
     }
 
-
     if (or(msg.content == `${PREFIX}${"Admin"}`,msg.content == `${PREFIX}${"admin"}`)){
         msg.member.roles.remove(["779842251328192592","787746606266843196","780586847256182844","779842721308213248","780117263994716180"])
         msg.member.roles.add("788079969744977941")
@@ -97,7 +99,11 @@ client.on('message',msg => {
         channel.send("<@"+String(id)+"> Fin t'as vraiment cru que c'était aussi facile ?!")
         
     }
+    if (and(msg.content.startsWith('<@'),msg.content.endsWith('787431460914724905>'))){
+        msg.channel.send(printjson(help))
+    }
 
+    
     
 }) 
 
