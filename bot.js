@@ -121,17 +121,17 @@ client.on('message',msg => {
                 //msg.channel.send("cas avec 1 nom")
                 joueur1=msg.author.id
                 joueur2=id[1].slice(1,18+1)
-                msg.channel.send("Joueur 1= <@"+joueur1+">\nJoueur 2= <@"+joueur2+">")
-                msg.channel.send(initmorpion())
-                const game = client.channels.cache.find(message => message.startsWith === ":tangerine::lemon::strawberry:")
-                //game.react("🍊")
+                //msg.channel.send("Joueur 1= <@"+joueur1+">\nJoueur 2= <@"+joueur2+">")
+                morpion(msg,joueur1,joueur2)
+                
+            
             
             }
             else if (id.length==3){
                 joueur1=id[1].slice(1,18+1)
                 joueur2=id[2].slice(1,18+1)
-                msg.channel.send("Joueur 1= <@"+joueur1+">, Joueur 2= <@"+joueur2+">")
-                msg.channel.send(initmorpion())
+                //msg.channel.send("Joueur 1= <@"+joueur1+">, Joueur 2= <@"+joueur2+">")
+                morpion(msg,joueur1,joueur2)
                 
             }
             else{
@@ -143,9 +143,7 @@ client.on('message',msg => {
         }        
     }
 
-    if (msg.author.id==joueur2+"pd"){
-        msg.channel.send("Alex vient d'envoyer un msg, quel honneur")
-    }
+   
 
     
 
@@ -165,9 +163,24 @@ client.on('messageDelete',msg => {
 client.login(process.env.BOT_TOKEN)
 
 function initmorpion (){
-    return ["🍊🍋🍓","🔳🔳🔳","🔳🔳🔳","🔳🔳🔳"]
+    return ["<:one:788892016070230066>🍋🍓","🔳🔳🔳","🔳🔳🔳","🔳🔳🔳"]
 }
 
+const filter = (reaction) => {
+	return reaction.emoji.name === '🍊'
+};
+
+function morpion(msg,j1,j2) {
+    msg.channel.send(initmorpion()).then(sent => {
+        sent.react("🍊")
+        sent.react("🍋")
+        sent.react("🍓")
+        sent.awaitReactions(filter, { max: 2})
+        .then(collected => console.log(collected.size))
+        
+    })
+
+}
 
 
 function and(a, b) {
