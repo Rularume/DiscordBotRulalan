@@ -11,7 +11,8 @@ const noel="Noël"
 
 const citation=require('./citations.json')
 const help=require('./help.json')
-
+joueur1=""
+joueur2=""
 
 client.on('ready', () => {
   console.log(`Go for launch`)
@@ -22,14 +23,12 @@ client.on('ready', () => {
 client.on('message',msg => {
     
     if (or(msg.content == `${PREFIX}${"Citation"}`,msg.content == `${PREFIX}${"citation"}`)){
-        //msg.channel.send("test sucessfull")
         n=Math.floor(Math.random() * (citation.length))-1
         msg.channel.send("```"+citation[n].citation+'\n\n'+citation[n].auteur+"```")
     } 
     
     if (or(msg.content == `${PREFIX}${Noel}`,msg.content == `${PREFIX}${noel}`)){
         msg.channel.send("Joyeux Noël")
-        //msg.send("test")
         msg.react("🎄")
         msg.react("🎅")
     }  
@@ -53,6 +52,16 @@ client.on('message',msg => {
     if (or(msg.content == `${PREFIX}${"Je t'aime"}`,msg.content == `${PREFIX}${"je t'aime"}`)){
         msg.channel.send('Moi aussi, de tout mon coeur')
         msg.react("❤️")
+    }
+
+    if (msg.content.startsWith(`${PREFIX}${"Je t'aime"}`)){
+        x=msg.content.slice(`${PREFIX}${"Je t'aime"}`.length)
+        id=x.split("<@")
+        Source=msg.author.id
+        Destinataire=id[1].slice(1,18+1)
+        msg.channel.send("<@"+Destinataire+">, sais tu que <@"+Source+"> t\'aime de tout son coeur ?")
+        msg.react("❤️")
+                
     }
 
     if (or(msg.content == `${PREFIX}${"Merci cousin"}`,msg.content == `${PREFIX}${"merci cousin"}`)){
@@ -97,11 +106,48 @@ client.on('message',msg => {
         const channel = client.channels.cache.find(channel => channel.name === "puni")
         const id=msg.author.id
         channel.send("<@"+String(id)+"> Fin t'as vraiment cru que c'était aussi facile ?!")
+        channel.send("Allez excuse toi, fais moi un bisou")
         
     }
     if (and(msg.content.startsWith('<@'),msg.content.endsWith('787431460914724905>'))){
         msg.channel.send(printjson(help))
     }
+
+    if (msg.content.startsWith(`${PREFIX}${"morpion"}`)){
+        x=msg.content.slice(`${PREFIX}${"morpion"}`.length)
+        if (x!=""){
+            id=x.split("<@")
+            if (id.length==2){
+                //msg.channel.send("cas avec 1 nom")
+                joueur1=msg.author.id
+                joueur2=id[1].slice(1,18+1)
+                msg.channel.send("Joueur 1= <@"+joueur1+">\nJoueur 2= <@"+joueur2+">")
+                msg.channel.send(initmorpion())
+                const game = client.channels.cache.find(message => message.startsWith === ":tangerine::lemon::strawberry:")
+                //game.react("🍊")
+            
+            }
+            else if (id.length==3){
+                joueur1=id[1].slice(1,18+1)
+                joueur2=id[2].slice(1,18+1)
+                msg.channel.send("Joueur 1= <@"+joueur1+">, Joueur 2= <@"+joueur2+">")
+                msg.channel.send(initmorpion())
+                
+            }
+            else{
+                msg.channel.send("Mauvais arguments, ressaye avec !morpion @Adversaire")
+            }
+        }
+        else{
+            msg.channel.send("Pas d'arguments, ressaye avec !morpion @Adversaire")
+        }        
+    }
+
+    if (msg.author.id==joueur2+"pd"){
+        msg.channel.send("Alex vient d'envoyer un msg, quel honneur")
+    }
+
+    
 
     
     
@@ -117,6 +163,12 @@ client.on('messageDelete',msg => {
 
 
 client.login(process.env.BOT_TOKEN)
+
+function initmorpion (){
+    return ["🍊🍋🍓","🔳🔳🔳","🔳🔳🔳","🔳🔳🔳"]
+}
+
+
 
 function and(a, b) {
     if (a) {
