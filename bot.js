@@ -70,7 +70,7 @@ client.on('message',msg => {
     }
 
     if (or(msg.content == `${PREFIX}${"Sacoche"}`,msg.content == `${PREFIX}${"sacoche"}`)){
-        msg.channel.send("Le dernier des dinosaures")        
+        msg.channel.send("🎵 Le dernier des dinosaures 🎵")    
     }
     
     if (or(msg.content == `${PREFIX}${"Donne moi un A"}`,msg.content == `${PREFIX}${"donne moi un a"}`)){
