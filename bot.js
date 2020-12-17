@@ -163,22 +163,57 @@ client.on('messageDelete',msg => {
 client.login(process.env.BOT_TOKEN)
 
 function initmorpion (){
-    return ["<:one:788892016070230066>🍋🍓","🔳🔳🔳","🔳🔳🔳","🔳🔳🔳"]
+    flagj1=false
+    return [["none","none","none"],["none","none","none"],["none","none","none"]]
+    return ["<:un:788892016070230066><:deux:788897267531907102><:trois:788897547090395137>","🔳🔳🔳","🔳🔳🔳","🔳🔳🔳"]
 }
 
-const filter = (reaction) => {
-	return reaction.emoji.name === '🍊'
-};
+function printmropion(list){
+    result=""
+    for(let k=0;k<list.length;k++){
+        temp=""
+        for (let i=0;i<list[0].length;i++){
+            if (list[k][i]=="none"){
+                temp+="🔳"
+            }
+            else if (list[k][i]=="x"){
+                temp+="❌"
+            }
+        }
+        result+=temp+"\n"
+    }
+    return result
+}
 
+const filterj1 = (reaction,user) => {
+    return reaction.emoji.name === 'un' && user.id === joueur1
+}
+
+const filterj2 = (reaction,user) => {
+	return reaction.emoji.name === 'un' && user.id === joueur2
+}
 function morpion(msg,j1,j2) {
-    msg.channel.send(initmorpion()).then(sent => {
-        sent.react("🍊")
-        sent.react("🍋")
-        sent.react("🍓")
-        sent.awaitReactions(filter, { max: 2})
-        .then(collected => console.log(collected.size))
+    grid=initmorpion()
+    msg.channel.send(printmropion(grid)).then(sent => {
+        sent.react("<:un:788892016070230066>")
+        sent.react("<:deux:788897267531907102>")
+        sent.react("<:trois:788897547090395137>")
+        sent.awaitReactions(filterj1, { max: 1}).then(collected =>{
+            flagj1=true
+            if (flagj1){
+                grid[0][0]="x"
+                msg.channel.send(printmropion(grid))
+                sent.delete()
+                morpion(msg,j1,j2)
+            }
+            //console.log(collected.size)
+        })
+
+        //sent.awaitReactions(filterj2, { max: 1}).then(collected =>{
+        //console.log(collected.size)})
         
     })
+    
 
 }
 
